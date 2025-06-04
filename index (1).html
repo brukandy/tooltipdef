@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html lang="it" style=" width: 100%; height: 1500px; overflow: visible;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mappa Corso con Padding Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  html, body {
+    overflow-anchor: none;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background: #fdfdfd;
+  }
+  .map-container {
+    width: 100vw;
+    height: 100vh;
+    aspect-ratio: 5313/2363;
+    max-width: 100vw;
+    max-height: 100vh;
+    position: relative;
+    overflow: visible;
+}
+svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+  .pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #12325B;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    background: linear-gradient(135deg, #12325B 0%, #1680D6 100%);
+    color: #fff !important;
+    border: 1px solid #1680D6;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif !important;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+  .title:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
+<style>
+html, body {
+    width: 100%;
+    height: 2000px;
+    overflow: visible !important;
+    position: relative;
+}
+.container, .wrapper, .map, .mappa, .main, .content, .layout {
+    overflow: visible !important;
+    width: 4000px !important;
+    height: 2000px !important;
+    position: relative !important;
+}
+.pin {
+    overflow: visible !important;
+}
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.tooltip {
+  max-width: 380px;
+  min-width: 320px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+  color: #001f3f; /* blu navy */
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 8px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: absolute;
+  z-index: 1000;
+  display: none;
+}
+.pin:hover .tooltip {
+  display: block;
+}
+</style>
+<style>
+.pin {
+  transition: transform 0.2s ease;
+}
+.pin:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+</style>
+</head>
+<body style=" width: 100%; height: 1500px; overflow: visible;">
+<div class="map-container"><svg fill="none" height="2363" viewbox="0 0 5313 2363" width="5313" xmlns="http://www.w3.org/2000/svg">
+<path d="M1546.19 990.791L845.814 827.633C845.095 827.466 844.768 826.629 845.183 826.018L870.726 788.46C870.97 788.101 871.41 787.929 871.833 788.027L1586.76 953.827C1606.77 958.469 1616 981.671 1604.63 998.786L1546.62 1086.1C1539.74 1096.45 1545.28 1110.49 1557.37 1113.37L1575.77 1117.75C1589.53 1121.03 1603.86 1115.35 1611.65 1103.55L1752.26 890.374C1776.14 854.169 1820.31 837.028 1862.37 847.648L1869.56 849.465C1906.9 858.895 1923.65 902.458 1902.23 934.466L1860.88 996.254C1854.8 1005.34 1859.59 1017.7 1870.2 1020.33L2007.67 1054.35L2017.66 1057.35L2275.85 1116.81C2295.89 1121.43 2305.15 1144.65 2293.76 1161.78L2235.8 1249.04C2228.92 1259.39 2234.45 1273.43 2246.55 1276.31L2264.95 1280.69C2278.7 1283.97 2293.04 1278.29 2300.83 1266.49L2441.43 1053.31C2465.31 1017.11 2509.49 999.969 2551.54 1010.59L2558.74 1012.41C2596.08 1021.84 2612.82 1065.4 2591.4 1097.41L2550.12 1159.1C2544.02 1168.21 2548.85 1180.61 2559.51 1183.2L2697.9 1216.77L2705.26 1219.24L2963.45 1278.7C2983.49 1283.32 2992.74 1306.54 2981.36 1323.67L2923.4 1410.93C2916.52 1421.28 2922.05 1435.32 2934.15 1438.2L2952.55 1442.58C2966.3 1445.86 2980.64 1440.18 2988.43 1428.38L3129.03 1215.2C3152.91 1179 3197.09 1161.86 3239.14 1172.48L3244.72 1173.89C3282.51 1183.43 3299.08 1227.83 3276.77 1259.79L3234.25 1320.72C3227.87 1329.85 3232.72 1342.53 3243.56 1345.09L3386.02 1378.66L3391.8 1380.07L3650 1439.54C3670.04 1444.16 3679.29 1467.38 3667.91 1484.51L3609.95 1571.77C3603.07 1582.12 3608.6 1596.16 3620.69 1599.04L3639.09 1603.42C3652.85 1606.7 3667.19 1601.02 3674.97 1589.22L3815.58 1376.04C3839.46 1339.84 3883.63 1322.7 3925.69 1333.32L3932.88 1335.13C3970.23 1344.56 3986.97 1388.13 3965.55 1420.13L3924.26 1481.85C3918.16 1490.95 3922.98 1503.34 3933.63 1505.94L4458.69 1633.78C4459.34 1633.94 4459.65 1634.69 4459.31 1635.27L4437.25 1672.37C4437.02 1672.74 4436.58 1672.93 4436.15 1672.83L3867.57 1536.21C3854.05 1532.96 3847.9 1517.23 3855.64 1505.68L3915.18 1416.7C3924.96 1402.08 3917.17 1382.2 3900.07 1378.12L3897.71 1377.56C3879.28 1373.17 3860.06 1380.74 3849.57 1396.52L3706.4 1612.04C3689.23 1637.9 3657.68 1650.21 3627.52 1642.83L3567.25 1628.07C3546.93 1623.1 3537.79 1599.4 3549.51 1582.07L3613.3 1486.16C3615.75 1482.47 3613.74 1477.48 3609.43 1476.51L3361.42 1420.73C3361.35 1420.71 3361.28 1420.7 3361.2 1420.7H3359.86C3359.78 1420.7 3359.7 1420.69 3359.62 1420.67L3180.63 1375.59C3167.23 1372.22 3161.22 1356.59 3168.9 1345.12L3228.64 1255.86C3238.41 1241.25 3230.62 1221.36 3213.52 1217.29L3211.17 1216.72C3192.73 1212.33 3173.51 1219.9 3163.02 1235.69L3019.85 1451.2C3002.68 1477.06 2971.13 1489.37 2940.98 1481.99L2880.7 1467.23C2860.38 1462.26 2851.24 1438.56 2862.96 1421.23L2926.75 1325.32C2929.2 1321.64 2927.2 1316.64 2922.88 1315.67L2674.84 1259.88C2674.79 1259.87 2674.74 1259.86 2674.69 1259.84L2672.14 1258.82L2493.03 1213.7C2479.63 1210.33 2473.62 1194.71 2481.3 1183.23L2541.04 1093.97C2550.81 1079.36 2543.02 1059.47 2525.92 1055.4L2523.57 1054.84C2505.13 1050.44 2485.91 1058.01 2475.42 1073.8L2332.25 1289.31C2315.08 1315.17 2283.53 1327.48 2253.38 1320.1L2193.1 1305.34C2172.78 1300.37 2163.64 1276.67 2175.36 1259.34L2239.15 1163.43C2241.6 1159.75 2239.6 1154.75 2235.28 1153.78L1987.28 1098C1987.21 1097.99 1987.13 1097.96 1987.06 1097.92L1983.06 1095.92C1982.99 1095.89 1982.92 1095.87 1982.85 1095.85L1803.85 1050.76C1790.45 1047.39 1784.45 1031.76 1792.13 1020.29L1851.86 931.027C1861.64 916.415 1853.85 896.534 1836.74 892.455L1834.39 891.895C1815.95 887.499 1796.73 895.069 1786.24 910.855L1643.08 1126.37C1625.9 1152.23 1594.36 1164.54 1564.2 1157.16L1503.92 1142.4C1483.6 1137.43 1474.46 1113.73 1486.19 1096.4L1550.01 1000.43C1552.45 996.761 1550.48 991.79 1546.19 990.791Z" fill="#CCE1F6"></path>
+<path d="M1554.39 983.02L853.814 819.678C853.095 819.51 852.768 818.673 853.183 818.061L878.733 780.461C878.977 780.101 879.417 779.929 879.84 780.027L1594.96 946.014C1614.99 950.662 1624.21 973.89 1612.84 991.024L1554.82 1078.44C1547.94 1088.8 1553.47 1102.86 1565.57 1105.74L1583.97 1110.12C1597.73 1113.4 1612.07 1107.72 1619.86 1095.9L1760.51 882.49C1784.39 846.243 1828.58 829.084 1870.65 839.716L1877.84 841.535C1915.2 850.975 1931.94 894.588 1910.52 926.632L1869.16 988.49C1863.08 997.585 1867.87 1009.96 1878.48 1012.59L2015.99 1046.65L2025.98 1049.65L2284.25 1109.19C2304.3 1113.81 2313.55 1137.06 2302.17 1154.21L2244.18 1241.56C2237.3 1251.93 2242.84 1265.98 2254.93 1268.86L2273.34 1273.25C2287.1 1276.53 2301.44 1270.85 2309.23 1259.03L2449.87 1045.61C2473.76 1009.37 2517.95 992.208 2560.01 1002.84L2567.21 1004.66C2604.56 1014.1 2621.31 1057.71 2599.89 1089.76L2558.59 1151.52C2552.49 1160.64 2557.33 1173.05 2567.98 1175.64L2706.41 1209.25L2713.77 1211.72L2972.04 1271.26C2992.09 1275.88 3001.34 1299.13 2989.96 1316.28L2931.97 1403.63C2925.09 1414 2930.63 1428.05 2942.72 1430.94L2961.13 1435.32C2974.89 1438.6 2989.23 1432.92 2997.02 1421.1L3137.66 1207.69C3161.55 1171.44 3205.74 1154.28 3247.8 1164.91L3253.38 1166.32C3291.18 1175.88 3307.76 1220.33 3285.44 1252.32L3242.91 1313.32C3236.53 1322.46 3241.38 1335.16 3252.23 1337.72L3394.72 1371.32L3400.51 1372.74L3658.77 1432.28C3678.82 1436.9 3688.08 1460.15 3676.69 1477.3L3618.71 1564.65C3611.83 1575.02 3617.36 1589.07 3629.46 1591.96L3647.87 1596.34C3661.63 1599.62 3675.97 1593.94 3683.76 1582.12L3824.4 1368.71C3848.29 1332.46 3892.47 1315.3 3934.54 1325.93L3941.74 1327.75C3979.09 1337.19 3995.84 1380.8 3974.41 1412.85L3933.11 1474.63C3927.01 1483.75 3931.84 1496.15 3942.49 1498.75L4467.69 1626.74C4468.34 1626.9 4468.65 1627.64 4468.31 1628.22L4446.24 1665.37C4446.02 1665.74 4445.57 1665.93 4445.15 1665.83L3876.41 1529.05C3862.88 1525.8 3856.73 1510.06 3864.47 1498.49L3924.03 1409.41C3933.81 1394.78 3926.02 1374.87 3908.91 1370.79L3906.56 1370.23C3888.12 1365.83 3868.89 1373.41 3858.4 1389.21L3715.19 1604.97C3698.01 1630.86 3666.46 1643.18 3636.29 1635.79L3576 1621.02C3555.67 1616.04 3546.53 1592.31 3558.26 1574.97L3622.06 1478.95C3624.51 1475.26 3622.51 1470.26 3618.19 1469.29L3370.12 1413.44C3370.05 1413.43 3369.97 1413.42 3369.9 1413.42H3368.56C3368.47 1413.42 3368.39 1413.41 3368.31 1413.39L3189.27 1368.26C3175.87 1364.88 3169.86 1349.24 3177.55 1337.75L3237.3 1248.39C3247.08 1233.76 3239.28 1213.85 3222.17 1209.77L3219.82 1209.21C3201.38 1204.81 3182.15 1212.39 3171.66 1228.19L3028.46 1443.95C3011.27 1469.84 2979.72 1482.16 2949.56 1474.77L2889.26 1460C2868.94 1455.02 2859.79 1431.29 2871.52 1413.95L2935.32 1317.93C2937.77 1314.24 2935.77 1309.24 2931.46 1308.27L2683.35 1252.42C2683.3 1252.41 2683.25 1252.39 2683.2 1252.37L2680.64 1251.35L2501.48 1206.18C2488.08 1202.81 2482.07 1187.16 2489.76 1175.67L2549.51 1086.31C2559.29 1071.68 2551.49 1051.78 2534.38 1047.7L2532.03 1047.14C2513.59 1042.74 2494.36 1050.31 2483.87 1066.12L2340.67 1281.88C2323.48 1307.76 2291.93 1320.09 2261.77 1312.7L2201.47 1297.93C2181.15 1292.95 2172 1269.22 2183.73 1251.87L2247.54 1155.85C2249.99 1152.17 2247.98 1147.17 2243.67 1146.2L1995.6 1090.35C1995.52 1090.34 1995.45 1090.31 1995.37 1090.27L1991.37 1088.27C1991.31 1088.24 1991.24 1088.21 1991.17 1088.2L1812.11 1043.06C1798.72 1039.68 1792.71 1024.04 1800.39 1012.55L1860.14 923.189C1869.92 908.56 1862.12 888.656 1845.02 884.573L1842.66 884.012C1824.22 879.611 1804.99 887.19 1794.51 902.994L1651.3 1118.75C1634.12 1144.64 1602.56 1156.97 1572.4 1149.58L1512.11 1134.8C1491.78 1129.82 1482.64 1106.1 1494.36 1088.75L1558.21 992.666C1560.65 988.997 1558.68 984.02 1554.39 983.02Z" fill="url(#paint0_linear_1381_63)"></path>
+<line stroke="#1680D6" stroke-width="5" x1="903.229" x2="903.229" y1="704.721" y2="793.045"></line>
+<circle cx="903.357" cy="705.246" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="2520.12" x2="2520.12" y1="931.721" y2="1020.05"></line>
+<circle cx="2520.25" cy="932.246" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="3204.12" x2="3204.12" y1="1084.72" y2="1173.05"></line>
+<circle cx="3204.25" cy="1085.25" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="2880.12" x2="2880.12" y1="1358.72" y2="1447.05"></line>
+<circle cx="2880.25" cy="1359.25" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="2196.12" x2="2196.12" y1="1193.72" y2="1282.05"></line>
+<circle cx="2196.25" cy="1194.25" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="4433.05" x2="4433.05" y1="1564.83" y2="1653.16"></line>
+<circle cx="4433.18" cy="1565.36" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="3912.57" x2="3912.57" y1="1255.7" y2="1344.02"></line>
+<circle cx="3912.7" cy="1256.22" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="3569.12" x2="3569.12" y1="1520.72" y2="1609.05"></line>
+<circle cx="3569.25" cy="1521.25" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="1513.09" x2="1513.09" y1="1020.17" y2="1108.49"></line>
+<circle cx="1513.22" cy="1020.69" fill="black" r="15.2465"></circle>
+<line stroke="#1680D6" stroke-width="5" x1="1848.51" x2="1848.51" y1="795.148" y2="883.473"></line>
+<circle cx="1848.64" cy="795.674" fill="black" r="15.2465"></circle>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1381_63" x1="853" x2="4469" y1="1223" y2="1223">
+<stop stop-color="#12325B"></stop>
+<stop offset="1" stop-color="#1680D6"></stop>
+</lineargradient>
+</defs>
+</svg>
+
+
+</div>
+
+
+
+
+<div class="pin" style="top: 220px; left:   14.63%">
+<div class="title">Studio e Ricerca di Mercato
+        <span class="tooltip">Metodologie e strumenti per analizzare mercati e comportamenti dei consumatori attraverso dati qualitativi e quantitativi, interpretando trend e opportunità strategiche.</span>
+</div>
+</div>
+<div class="pin" style="top: 420px; left:   29%">
+<div class="title">Mission, Vision & Brand
+        <span class="tooltip">Analizza il ruolo di mission, vision e brand nella strategia aziendale e comunicazione, offrendo le basi per una brand identity coerente e sostenibile.</span>
+</div>
+</div>
+<div class="pin" style="top: 250px; left:   29.26%">
+<div class="title">Fund & Business Plan
+        <span class="tooltip">Tecniche per la raccolta fondi e redazione del business plan, inclusa la valutazione finanziaria e la presentazione a investitori e stakeholder.</span>
+</div>
+</div>
+<div class="pin" style="top: 295px; left:   46.33%">
+<div class="title">Pianificazione Strategica
+        <span class="tooltip">Strumenti pratici di pianificazione strategica e budgeting, svolti a settembre per allinearsi con la pianificazione reale aziendale.</span>
+</div>
+</div>
+<div class="pin" style="top: 340px; left:   63.99%">
+<div class="title">Processi e Automazioni
+        <span class="tooltip">Tecniche per ottimizzare e automatizzare i processi aziendali, migliorando efficienza, riducendo errori e supportando la scalabilità.</span>
+</div>
+</div>
+<div class="pin" style="top: 400px; left:   70.34%">
+<div class="title">ESAME
+        <span class="tooltip">Esame finale online che certifica le competenze acquisite. Al superamento, si ottiene l’Attestato di Partecipazione con CFU riconosciuti dall’Università IUL.</span>
+</div>
+</div>
+<!-- Copia spostata Meta Ads -->
+<div class="pin" style="top: 556px; left: 64.48%">
+  <div class="title">Time & Team Manage
+    <span class="tooltip">Strategie per gestire tempo e team in modo produttivo, pianificando, delegando e motivando per raggiungere obiettivi aziendali.</span>
+  </div>
+</div>
+<!-- Copia spostata prova 1 -->
+<div class="pin" style="top: 525px; left: 53%">
+  <div class="title">Utili e Cash Flow
+    <span class="tooltip">Approfondisce la differenza tra utili contabili e flussi di cassa, e come questi influenzano la liquidità e la sostenibilità aziendale.</span>
+  </div>
+</div>
+<!-- Copia spostata prova 2 -->
+<div class="pin" style="top: 480px; left: 43%">
+  <div class="title">Indici di Redditività
+    <span class="tooltip">Studio di Stato Patrimoniale, Conto Economico Riclassificato e Ranking Creditizio per valutare performance e salute finanziaria.</span>
+  </div>
+</div>
+<div class="pin" style="top: 460px; left:   88.74%">
+<div class="title" style="margin-left: -100px;">Workshop pratico
+        <span class="tooltip">16 ore di consulenza in presenza post-esame con i docenti per sviluppare progetti, idee di business o prodotti in un laboratorio pratico.</span>
+</div>
+</div>
+
+
+
+</body>
+</html>
